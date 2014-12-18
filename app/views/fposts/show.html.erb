@@ -1,0 +1,21 @@
+<h1><%= @fpost.title %></h1>
+<p><%= @fpost.content %></p>
+
+<div id="comments">
+		<% @fpost.comments.each do |commy| %>
+		<%= commy.comment %>
+
+		<% end %>
+
+	<h3>Reply to thread</h3>
+		
+
+	<%= render 'forms/comments' %> 
+		
+
+</div>
+
+<%= link_to 'Edit', edit_fpost_path(@fpost) %>
+|<%= link_to 'Delete', fpost_path(@fpost), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<%= link_to 'Home', root_path %>

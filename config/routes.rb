@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+resources :posts
+resources :fposts do
+  resources :comments
+end
+
+get 'posts/home' => 'posts#home'
 
   devise_for :users
-root to: "home#index"
+root to: "posts#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

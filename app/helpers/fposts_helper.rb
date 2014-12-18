@@ -1,0 +1,2 @@
+module FpostsHelper
+end

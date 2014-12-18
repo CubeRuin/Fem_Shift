@@ -1,0 +1,16 @@
+<h1>The forum</h1>
+
+<% @fposts.each do |fpost| %>
+	<div class="f_post_wrapper">
+		<h2 class="title">
+			<%= link_to fpost.title, fpost_path(fpost.id) %></h2>
+			<p class="date">
+				<%= fpost.created_at.strftime("%B, %d, %Y") %>
+			</p>
+			<p>Published <%= time_ago_in_words(fpost.created_at) %> ago by <%#= fpost.user.email %></p>
+
+	</div>
+
+<% end %>
+
+<%= link_to 'New Forum Post', new_fpost_path %>
