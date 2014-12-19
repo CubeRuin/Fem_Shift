@@ -8,6 +8,9 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
+#stuff for heroku
+gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'simple_form', '~> 3.1.0'
@@ -49,3 +52,4 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+ruby "2.1.2"
