@@ -1,14 +1,20 @@
+
 Rails.application.routes.draw do
 
-resources :posts
+resources :posts do
+  resources :comments
+end
+
 resources :fposts do
   resources :comments
 end
 
 get 'posts/home' => 'posts#home'
 
+post 'posts/add_comment' => 'posts#add_comment', as: :comments
+
   devise_for :users
-root to: "posts#index"
+root to: "posts#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

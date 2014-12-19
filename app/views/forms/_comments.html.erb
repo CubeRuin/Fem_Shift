@@ -1,4 +1,4 @@
-<%= form_for [@fpost, @comment] do |f| %>
+<%= form_for [ @fpost, @comment ] do |f| %>
 <p>
 	<%= f.label :title %><br>
 	<%= f.text_field :title %>
@@ -7,6 +7,7 @@
 	<%= f.label :content %><br>
 	<%= f.text_area :content %>
 </p>
+<%= hidden_field_tag :post_id, @fpost.id %>
 <p>
 	<%= f.submit %>
 </p>

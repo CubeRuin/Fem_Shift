@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
 before_action :find_fpost, only: [:show, :edit, :update, :destroy]
 before_action :find_post, only: [:show, :edit, :update, :destroy]
+	
+	def index
+		@comment = Comment.all
+	end
 
 	def new
 		@comment = Comment.new

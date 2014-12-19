@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all.order('created_at DESC')
+		binding.pry
 	end
 
 	def new
@@ -10,7 +11,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		@post = Post.find(params[:id]) 
+		@fpost = @post
 		@comment = Comment.new
 	end
 
@@ -37,7 +39,16 @@ class PostsController < ApplicationController
 			render 'edit'
 		end
 	end
-
+    
+    def add_comment
+    	#Comment will be initialized with a valid post id, so relationship with post
+    	#will be automatically established. This works because comment_params has the post
+    	#id that it extracts from the incoming form submission
+       @comment = Comment.new(comment_params)
+       @comment.save
+       redirect_to
+    end
+     
 	def home
 		
 	end
@@ -54,4 +65,8 @@ class PostsController < ApplicationController
 	def post_params
 		params.require(:post).permit(:title, :body, :user_id)
 	end
+
+	def comment_params
+		params.require(:comment).permit(:title, :body, :post_id)
+	end	
 end

@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+group :development do
+	gem 'better_errors'
+	gem 'pry-rails'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
+
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~> 3.4.1'
