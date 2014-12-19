@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     	#id that it extracts from the incoming form submission
        @comment = Comment.new(comment_params)
        @comment.save
-       redirect_to
+       redirect_to 
     end
      
 	def home
