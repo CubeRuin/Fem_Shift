@@ -5,6 +5,7 @@ resources :posts do
   resources :comments
 end
 
+
 resources :fposts do
   resources :comments
 end

@@ -11,12 +11,12 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 	end
 
 	def create
-		# @post = Post.find(params[:post_id])
-		#@fpost = current_user.fposts.build
-		#@fpost = Fpost.find(params[:fpost_id])
-		# @comment = @post.comments.create(params[:comment].permit(:name, :body))
-		@comment = Comment.new(params[:comment].permit(:title, :content, :post, :fpost))
-		@comment.fpost = @fpost
+		if params[:fpost_id]
+			@p = Fpost.find(params[:fpost_id])
+		else
+			@p = Post.find(params[:post_id])
+		end
+		@comment = @p.comments.new(params[:comment].permit(:title, :content, :post, :fpost))
 		if @comment.save
 			redirect_to :back
 		else

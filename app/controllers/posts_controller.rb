@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all.order('created_at DESC')
-		binding.pry
+		# binding.pry
 	end
 
 	def new
@@ -44,9 +44,11 @@ class PostsController < ApplicationController
     	#Comment will be initialized with a valid post id, so relationship with post
     	#will be automatically established. This works because comment_params has the post
     	#id that it extracts from the incoming form submission
-       @comment = Comment.new(comment_params)
+    	raise "hello"
+    	@post = Post.find(params[:id])
+       @comment = @post.comments.new(comment_params)
        @comment.save
-       redirect_to 
+       redirect_to @post
     end
      
 	def home

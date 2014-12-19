@@ -16,7 +16,7 @@
 
 	<div id="comments">
 		<h2><%= @post.comments.count %>Comments</h2>
-		<%= render @post.comments %>
+		<%= render "forms/comments_show" %>
 
 		<h3>Add a comment:</h3>
 		<%= render "forms/comments" %>
